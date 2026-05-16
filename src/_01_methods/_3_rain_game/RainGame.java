@@ -52,20 +52,43 @@ public class RainGame extends PApplet {
     int y;
     int x;
 
+    int backgroundRedValue = 220;
+    int backgroundGreenValue = 247;
+    int backgroundBlueValue = 246;
+    int theHeightOfTheRainDropThatLooksSuspiciouslyLikeAnEllipseWhichIsSlowlyFallingToTheGround = 600;
+    int theSpeedOfTheRainDropThatLooksSuspiciouslyLikeAnEllipseWhichIsSlowlyFallingToTheGround = 15;
+    for (i=0;i>=0;i++){
+    int backgroundRedValue = backgroundRedValue - 5;
+    int backgroundGreenValue = backgroundGreenValue - 5;
+    int backgroundBlueValue = backgroundBlueValue - 5;
+    int theHeightOfTheRainDropThatLooksSuspiciouslyLikeAnEllipseWhichIsSlowlyFallingToTheGround = 600;
+    int theSpeedOfTheRainDropThatLooksSuspiciouslyLikeAnEllipseWhichIsSlowlyFallingToTheGround = 15;
+    }
+
+    while (theHeightOfTheRainDropThatLooksSuspiciouslyLikeAnEllipseWhichIsSlowlyFallingToTheGround>0){
+        draw(backgroundRedValue,backgroundBlueValue,backgroundGreenValue,theHeightOfTheRainDropThatLooksSuspiciouslyLikeAnEllipseWhichIsSlowlyFallingToTheGround);
+        theSpeedOfTheRainDropThatLooksSuspiciouslyLikeAnEllipseWhichIsSlowlyFallingToTheGround = theSpeedOfTheRainDropThatLooksSuspiciouslyLikeAnEllipseWhichIsSlowlyFallingToTheGround + 1;
+        theHeightOfTheRainDropThatLooksSuspiciouslyLikeAnEllipseWhichIsSlowlyFallingToTheGround = theHeightOfTheRainDropThatLooksSuspiciouslyLikeAnEllipseWhichIsSlowlyFallingToTheGround - theSpeedOfTheRainDropThatLooksSuspiciouslyLikeAnEllipseWhichIsSlowlyFallingToTheGround;
+    }
     // Sets the size of your canvas
     @Override
     public void settings() {
-        size(WIDTH, HEIGHT);
+        size(600, 600);
     }
 
     @Override
     public void setup() {
-
+        bucket = loadImage("images/bucket.png");
+        bucket.resize(100, 100);
     }
 
     @Override
-    public void draw() {
-
+    public void draw(int backgroundRedValue, int backgroundBlueValue, int backgroundBlueValue, int theHeightOfTheRainDropThatLooksSuspiciouslyLikeAnEllipseWhichIsSlowlyFallingToTheGround) {
+        background(backgroundRedValue, backgroundGreenValue, backgroundBlueValue);
+        fill(44, 16, 181);
+        stroke(245, 213, 54);
+        ellipse(13,41,300,theHeightOfTheRainDropThatLooksSuspiciouslyLikeAnEllipseWhichIsSlowlyFallingToTheGround);
+        // Try and make the sky slightly darker with each raindrop
     }
 
     static public void main(String[] args) {

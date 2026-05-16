@@ -8,7 +8,6 @@ import processing.core.PImage;
  * Goal: Ok DJ! Make your own turn tables!
  * 
  * 1. Make an int variable to keep track of how much the record will spin.
- * 
  * In the setup() method:
  * 2. Load a picture of a record using the loadImage() method:
  *    pictureOfRecord = loadImage("images/record.png");
@@ -35,13 +34,21 @@ import processing.core.PImage;
  * 10.Use the song.play() and song.stop() methods to play a song ONLY when
  *    the record is spinning.
  */
+
 public class SpinningRecord extends PApplet {
     static final int WIDTH = 600;
     static final int HEIGHT = 600;
-    
-    Song song = new Song("awesomeTrack.mp3");
+    static final int amountToRotate = 6;
     PImage pictureOfRecord;
-    
+    Song song = new Song("awesomeTrack.mp3");
+    pictureOfRecord.resize();
+    image();
+
+    while (mousePressed = 1){
+        draw(amountToRotate);
+        song.play();
+    }
+
     @Override
     public void settings() {
         size(WIDTH, HEIGHT);
@@ -49,12 +56,13 @@ public class SpinningRecord extends PApplet {
 
     @Override
     public void setup() {
-        
+        pictureOfRecord = loadImage("images/record.png");
     }
 
     @Override
-    public void draw() {
-        
+    public void draw(int amountToRotate) {
+        int amountToRotate = amountToRotate + 1;
+        rotateImage(PImage pictureOfRecord, int amountToRotate);
     }
 
     static public void main(String[] args) {

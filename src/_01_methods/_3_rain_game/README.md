@@ -15,8 +15,7 @@ and your background color in the draw method
 3. Draw a raindrop at the top of the screen in the draw() method.
 ```
 
-    fill(red, green, blue);
-    stroke(red, green, blue);
+    44, 16, 181
     ellipse(x, y, width, height);
 ```
 4. Make the rain fall down the screen.
