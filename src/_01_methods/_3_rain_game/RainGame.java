@@ -49,14 +49,15 @@ public class RainGame extends PApplet {
     int bucketWidth = 50;
     int bucketHeight;
     PImage bucket;
-    int y;
-    int x;
+    int y = 0;
+    int x = WIDTH/2;
 
     int backgroundRedValue = 220;
     int backgroundGreenValue = 247;
     int backgroundBlueValue = 246;
     int theHeightOfTheRainDropThatLooksSuspiciouslyLikeAnEllipseWhichIsSlowlyFallingToTheGround = 600;
     int theSpeedOfTheRainDropThatLooksSuspiciouslyLikeAnEllipseWhichIsSlowlyFallingToTheGround = 15;
+    int theXValueOfTheBucketWhichIsActuallyARectangleBecauseTheRealBucketLooksWeird;
     // for (i=0;i>=0;i++){
     // int backgroundRedValue = backgroundRedValue - 5;
     // int backgroundGreenValue = backgroundGreenValue - 5;
@@ -84,13 +85,27 @@ public class RainGame extends PApplet {
     public void setup() {
         bucket = loadImage("images/bucket.png");
         bucket.resize(100, 100);
+        
     }
 
     public void draw(){
         background(backgroundRedValue, backgroundGreenValue, backgroundBlueValue);
         fill(44, 16, 181);
         stroke(245, 213, 54);
-        ellipse(13,41,300,theHeightOfTheRainDropThatLooksSuspiciouslyLikeAnEllipseWhichIsSlowlyFallingToTheGround);
+        ellipse(x,y,50,75);
+        rect(mouseX-100,525,200,75);
+        y = y + 15;
+        
+        
+        
+        if(y > HEIGHT) {
+        	checkCatch(x);
+        	x = (int) random(600);
+        	y = 0;
+        	backgroundRedValue -=  5;
+        	backgroundGreenValue -=  5;
+        	backgroundBlueValue -=  5;
+        }
     }
    // @Override
     // public void draw(int backgroundRedValue, int backgroundBlueValue, int backgroundBlueValue, int theHeightOfTheRainDropThatLooksSuspiciouslyLikeAnEllipseWhichIsSlowlyFallingToTheGround) {
@@ -115,5 +130,8 @@ public class RainGame extends PApplet {
             score--;
         }
         println("Your score is now: " + score);
+        if (score > 10) {
+        	println("You solved California's water shortage. Good Job!");
+        }
     }
 }
