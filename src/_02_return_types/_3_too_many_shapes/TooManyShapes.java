@@ -12,13 +12,29 @@ public class TooManyShapes {
 	static Robot rob = new Robot();
 
 	public static void main(String[] args) {
+		//JOptionPane.showInputDialog("Do you want to try out zanzanews, the next generation of therapy bot?");
+		//JOptionPane.showMessageDialog(null,"Good, I'm glad you do.");
 		//1. Ask the user how many sides they want their shape to be
+		String stringTheNumberOfSidesTheUserWantsTheShapesThatWillSoonBelongToThemToBe = JOptionPane.showInputDialog("How many sides do you want your shape to be?");
+		int integerTheNumberOfSidesTheUserWantsTheShapesThatWillSoonBelongToThemToBe = Integer.parseInt(stringTheNumberOfSidesTheUserWantsTheShapesThatWillSoonBelongToThemToBe);
 		
 		//2. Ask the user how many shapes they want
+		String stringTheNumberOfShapesTheUserWillSoonHaveIfTheyAreValid = JOptionPane.showInputDialog("How many shapes do you want?");
+		int integerTheNumberOfShapesTheUserWillSoonHaveIfTheyAreValid = Integer.parseInt(stringTheNumberOfShapesTheUserWillSoonHaveIfTheyAreValid);
 		
 		//3. Call canMakeShape() and save what is returned into a variable
+		boolean canWeMakeTheShapePartOne = canMakeShape(integerTheNumberOfSidesTheUserWantsTheShapesThatWillSoonBelongToThemToBe);
+	
 		
 		//4. If the shape CAN be drawn
+		if (canWeMakeTheShapePartOne) {
+			int daTurningAngleTheRobotNeedsToUseToMakeTheUsersShape = calculateTurnAngle(integerTheNumberOfSidesTheUserWantsTheShapesThatWillSoonBelongToThemToBe);
+			drawPolygons(integerTheNumberOfSidesTheUserWantsTheShapesThatWillSoonBelongToThemToBe, integerTheNumberOfShapesTheUserWillSoonHaveIfTheyAreValid, daTurningAngleTheRobotNeedsToUseToMakeTheUsersShape);
+			//JOptionPane.showMessageDialog("Doesn't this give you a feeling of control, only too lacking in modern life? Too bad it's not real.");
+		} else {
+			String sadlyICommaTheComputerMustBeKindToTheUserAndSayWhatIsInThisMethod = notEnoughSides();
+			JOptionPane.showMessageDialog(null, sadlyICommaTheComputerMustBeKindToTheUserAndSayWhatIsInThisMethod);
+		}
 		
 			//5. Call and save what is returned from calculateTurnAngle()
 		
